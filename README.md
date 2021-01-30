@@ -87,4 +87,4 @@ O Nano é um editor de texto simples, baseado no terminal Linux, bastante útil 
 	nano <nome_do_arquivo> #Abre um arquivo ou cria caso o arquivo não exista.
 
 
-
+![nano interface](img/nano.png)

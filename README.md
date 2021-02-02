@@ -54,7 +54,11 @@ Exemplos:
  - Ctrl+r : Busca um comando recente.
  - Ctrl+l : Limpa o terminal.
 
+#### Comandos úteis
 
+	history #mostra histórico de comandos digitados.
+	whatis <comando> #Exibe o que o comando faz.
+	find <path_geral> -name <arquivo> #Retorna o path especifico do arquivo pesquisado.
 
 
 ## Manipulando arquivos de texto no Linux
@@ -94,6 +98,18 @@ Agora a saída do comando **ls** (que o nome de todos os arquivo da pasta) será
 
 Utilizando o comando **>>** o conteúdo será anexado (concatenado) ao final do arquivo de destino. Se for utilizado apenas **>**, o arquivo será sobrescrito.
 
+#### Comando echo
+
+O Comando **echo** é utilizado quando queremos uma saída no terminal, por exemplo se você quer que que apenas seu nome apareça no terminal, use o comando:
+
+	echo -e "nome\n"
+
+A flag **-e** informa que o texto de saída contêm caracteres especiais, neste caso o **\n** que simplesmente adicionar uma quebra de linha ao final do texto. O comando **echo** pode ser utilizado para adicionar textos em um arquivo de texto, por exemplo:
+
+	echo -e "----- MEU ARQUIVO -------" >> arquivo.txt
+
+
+
 #### Busca em arquivos
 
 Utilizando o comando **grep** é possível realizar buscas em arquivos ou saída de comandos. Exemplo: Neste exemplo, o comando grep irá buscar pelas ocorrências da palavra "termo" dentro da saída do comando **tail arquivo.txt**.
@@ -115,11 +131,35 @@ As vezes nos deparamos com arquivos ou saída de comandos com muito texto, o que
 
 
 
-## Outros comandos
+## Outros comandos básicos
 
-#### Histórico de comandos
+#### Informações do hardware
+Primeiro vá para a pasta raiz **/** e entre na pasta **proc**
+	
+	cd / && cd proc
 
-	history #mostra histórico de comandos digitados.
+Agora digite o comando e substitua **arquivo** por algum arquivo da pasta **proc**.
+
+	cat /proc/arquivo #exemplo
+	cat /proc/cpuinfo #Informações sobre a CPU.
+	cat /proc/meminfo #Informações sobre a memória.
+	
+Outros comandos para ver informações sobre o sistema.
+	
+	lshw  #Exibi todos os hardwares no computador.
+	lspci #Exibi todos os hardwares conectados via PCI.
+	lsusb #Exibi todos os hardwares conectados via USB.
+	lscpu #Exibi todos os hardware de CPU.
+	arch #Exibi a arquitetura do sistema.
+	uname -a #Exibe o kenel do sistema operacional.
+	free #Exibe a memória física e memória swap.
+	du -h <path> #Exibe a quantidade de memória usada por cada arquivo em path.
+	 cat /etc/passwd #Exibe todos os usuários criado pelo usuário e pelo sistema.
+
+#### Comandos do sistema
+
+	reboot #Reinicia o sistema operacional.
+	shutdown now #Delisga o computador (now pode ser substituido por uma hora especifica, veja o help)
 
 #### Datas no terminal
 
@@ -128,9 +168,18 @@ As vezes nos deparamos com arquivos ou saída de comandos com muito texto, o que
 	cal julho 2020 #Exibe o calendário do mês julho de 2020.
 	date #Exibe a data atual.
 	
+## Comandos de gerenciamento de rede
 
-
-
+	ifconfig #Exibe detalhes das interfaces de redes.
+	hostname #Exibte o nome do pc na rede local.
+	hostname -I #Exibe o endereço IP na rede local.
+	who #Exibe estatus da conexão com a rede.
+	ping <host> #Envia mensagens de controle para um host especifico.
+	dig <host> #Exibe informações sobre o DNS.
+	traceroute <host> #Exibe informações dos saltos (nós) até o host informado.
+	whois <host> #Exibe informações sobre um determinado host.
+	finger #Exibe informações do usuário que está logado no host.
+	
 
 
 

@@ -1,4 +1,11 @@
+<h1 align="center"> Sobre o repositório </h1>
 
+Este repositório foi criado para consultas rápidas sobre comandos básicos do Linux, para organização do conteúdo foi utilizado como referência o curso de **Introdução ao Sistema Linux** da plataforma **Digital Inovation One**. 
+
+> AVISO: Este repositório apresenta apenas um conjunto de comandos básicos e explicações simplificadas, não o use como única e absoluta fonte de pesquisa!
+
+
+Fique à vontade para comentar, sugerir, criticar (construtivamente) ou colaborar fazendo um fork e adicionando conteúdos que possam ser úteis e que não estão presentes no repositório.
 <h1 align="center"> Terminal </h1>
 
 É um emulador de linhas de comandos que dispensa o uso de interface gráfica e facilita a automação de processos por meio de comandos, bastante utilizado por profissionais da área de TI, e podendo ser acessado pelo atalho **CTRL + ALT + T**.
@@ -45,6 +52,17 @@ Exemplos:
 	pwd && ls
 	mkdir pasta && cd pasta && pwd
 
+#### Alias
+
+Alias é basicamente um apelido (atalho) dado para um comando específico, isto pode ser útil quando temos algum comando de uso frequente e de sintaxe complexa ou grande. 
+
+	alias teste='<algum_comando>'
+
+Agora se usarmos o comando **teste**, o comando que foi adicionado após o sinal de igual será executado.
+
+
+
+
 #### Atalhos do teclado no terminal
 
  - Ctrl+c : Cancela o comando atual em funcionamento (incluindo programas abertos pelo terminal).
@@ -60,9 +78,14 @@ Exemplos:
 	history #mostra histórico de comandos digitados.
 	whatis <comando> #Exibe o que o comando faz.
 	find <path_geral> -name <arquivo> #Retorna o path especifico do arquivo pesquisado.
+	cmp <arquivo1> <arquivo2> #Compara os dois arquivos.
+	dif <arquivo1> <arquivo2> #Exibe a diferença entre dois arquivos.
+	sort -n <arquivo.txt> #Ordena a saída do arquivo no terminal.
+	uptime #Exibe o tempo que faz que o sistema está funcionando. 
+	time <comando> #Exibe o tempo que o comando levou para concluir.
 
 
-## Manipulando arquivos de texto no Linux
+<h2 align="center"> Manipulando arquivos de texto no Linux </h2>
 
 Manipular arquivos de texto no Linux é algo importante, pois este tipo de arquivo apresenta uma estrutura simples que dispensa o uso de interface ou de programas mais avançados para serem editados, além de possibilitar em alguns casos, salvar informações, configurações, ou log de programas, etc.
 
@@ -83,6 +106,10 @@ Para manipulação de arquivos de texto (txt) direto no terminal.
 	tac <arquivo.txt> #Igual o cat, porém com as ordem das linhas invertidas.
 	head <arquivo.txt> #Exibe as 10 primeiras linhas do arquivo (estas linhas normalmente são utilizadas para informações de cabeçalhos)
 	tail <arquivo.txt> #Exibe as 10 ultimas linhas do arquivo.
+	nl <arquivo.txt> #Exibe o arquivo com o número das linhas.
+	wc -l <arquivo.txt> #Exibe a quantidade de linhas do arquivo.
+	wc -w <arquivo.txt> #Exibe a quantidade de palavras dentro do arquivo.
+	
 	
 #### Redirecionamento de saída
 
@@ -130,9 +157,7 @@ As vezes nos deparamos com arquivos ou saída de comandos com muito texto, o que
 
 	
 
-
-
-## Outros comandos básicos
+<h2 align="center"> Outros comandos básicos </h2>
 
 #### Informações do hardware
 Primeiro vá para a pasta raiz **/** e entre na pasta **proc**
@@ -155,12 +180,14 @@ Outros comandos para ver informações sobre o sistema.
 	uname -a #Exibe o kenel do sistema operacional.
 	free #Exibe a memória física e memória swap.
 	du -h <path> #Exibe a quantidade de memória usada por cada arquivo em path.
-	 cat /etc/passwd #Exibe todos os usuários criado pelo usuário e pelo sistema.
+	cat /etc/passwd #Exibe todos os usuários criado pelo usuário e pelo sistema.
 
 #### Comandos do sistema
 
 	reboot #Reinicia o sistema operacional.
 	shutdown now #Delisga o computador (now pode ser substituido por uma hora especifica, veja o help)
+	last reboot #Exibe histórico de reinicializações. 
+	
 
 #### Datas no terminal
 
@@ -168,8 +195,8 @@ Outros comandos para ver informações sobre o sistema.
 	cal 2020 #Exibe todos os meses do ano de 2020.
 	cal julho 2020 #Exibe o calendário do mês julho de 2020.
 	date #Exibe a data atual.
-	
-## Comandos de gerenciamento de rede
+
+<h2 align="center"> Comandos de gerenciamento de rede </h2>
 
 	ifconfig #Exibe detalhes das interfaces de redes.
 	hostname #Exibte o nome do pc na rede local.
@@ -180,12 +207,80 @@ Outros comandos para ver informações sobre o sistema.
 	traceroute <host> #Exibe informações dos saltos (nós) até o host informado.
 	whois <host> #Exibe informações sobre um determinado host.
 	finger #Exibe informações do usuário que está logado no host.
+	route -n #Exibe a tabela de roteamento IP do kernel.
+	
+<h1 align="center"> Gerenciamento de usuários </h1>
+
+Gerenciar usuários no Linux é algo importante, pois cada usuário pode ter privilégios diferentes e acesso a conteúdos diferentes.
+
+	sudo adduser <nome_do_usuario> #Para adicionar um novo usuário.
+	su <nome_do_usuario> #Para trocar de usuário.
+	passwd <nome_do_usuario> #Para modificar a senha do usuário.
+	lastlog #Informações dos logs realizados no sistema.
+	last #Histórico de entrada e saída de usuários no sistema.
+	logname #Exibe o nome do usuário logado no sistema.
+	id #Exibe o identificador do usuário.
+	sudo userdel -r <nome_do_usuario> #Remove a pasta pessoal do usuário.
+
+Como já foi visto anteriormente, podemos ver todos os usuários com mais detalhes por meio do comando:
+
+	cat /etc/passwd #Exibe todos os usuários criado pelo usuário e pelo sistema.
+
+#### Grupos de usuários
+
+	sudo addgroup <nome_do_grupo> #Cria um novo grupo.
+	sudo adduser <nome_do_usuario> <nome_do_grupo> #Adicionar um usuário para o grupo.
+	sudo gpasswd -d <nome_do_usuario> <nome_do_grupo> #Remove o usuário do grupo.
+	sudo groupdel <nome_do_grupo> #Remove o grupo.
+	
+Todos os grupos podem ser visualizados com detalhes por meio do comando:
+	
+	cat /etc/group #Exibe informações sobre os grupos presentes no sistema.
+
+#### Permissões
+
+As permissões são utilizadas para restringir o acesso.
+
+	ls -lh #Lista o conteúdo da pasta atual e os tipos de permissões do usuário sobre o conteúdo da pasta. 
+
+As permissões normalmente são descritas por um conjunto de caracteres formado por 10 letras, a primeira letra informa se é um diretório (**d**) ou arquivo (**-**), e em seguida 9 (nove) caracteres correspondentes aos três tipos de acesso: de leitura (**r**), escrita (**w**) ou execuções (**x**), organizados em 3 tipos de usuários: O criador do arquivo, integrantes do grupo, usuários de fora do grupo. Segue um exemplo:
+
+	-rwxrwxrwx #Exemplo onde todos os usuários podem ler, escrever ou executar um arquivo.
+	drwxr--r-- #Exemplo onde apenas o dono do arquivo pode modificar enquanto os demais só podem ler.
+
+Para modificando tipo de privilégio sobre um arquivo/pasta é utilizado uma abordagem de máscara octal em conjunto com com os grupos descrito acima.
+
+|| Dono | Grupo | Outros |
+|--|--|--|--|
+| Tipo da permissão | r w x | r w x | r w x |
+| Máscara octal | 4 2 1 | 4 2 1 | 4 2 1 |
+
+Atribuindo permissões conforme a máscara:
+| Valor | Permissão | Descrição |
+|--|--|--|
+|1            | - - x | Permissão de execução |
+|2            | - w - |Permissão de escrita |
+|2 + 1 = 3    | - w x |Permissão de escrita e execução |
+|4            | r - - | Permissão de leitura |
+|4 + 1 = 5 | r-x |Para conceder permissão de leitura e execução |
+| 4 + 2 = 6 | r w - |Para conceder permissão de escrita e leitura |
+|4 + 2 + 1 = 7 | r w x |Para conceder permissão de leitura, escrita e execução |
+
+Utilizando o comando **chmod** seguido pela combinação de 3 valores conforme apresentado acima para cada tipo de usuário, logo:
+
+	chmod 100 <arquivo/pasta> #Para conceder permissão de execução para o usuário proprietário.
+	chmod 040 <arquivo/pasta>  #Para conceder permissão de leitura para os usuários do grupo.
+	chmod 444 <arquivo/pasta>  #Para conceder permissão de leitura para toso os usuários.
+	chmod 666 <arquivo/pasta>  #Para conceder permissão de leitura e escrita para todos os usuários.
+	chmod 777 <arquivo/pasta>  #Para conceder todas as permissões para todos os usuários.
 	
 
 
 
 
-### Referências
+	
+
+## Referências
 
 Digital Inovation One: Linux: Introdução ao sistema operacional
 

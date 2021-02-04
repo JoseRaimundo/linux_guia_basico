@@ -6,6 +6,11 @@ Este repositório foi criado para consultas rápidas sobre comandos básicos do 
 
 
 Fique à vontade para comentar, sugerir, criticar (construtivamente) ou colaborar fazendo um fork e adicionando conteúdos que possam ser úteis e que não estão presentes no repositório.
+
+    
+
+> AVISO: Todos os comandos e exemplos utilizados neste repositório foram realizados em uma distribuição Linux Ubuntu.
+
 <h1 align="center"> Terminal </h1>
 
 É um emulador de linhas de comandos que dispensa o uso de interface gráfica e facilita a automação de processos por meio de comandos, bastante utilizado por profissionais da área de TI, e podendo ser acessado pelo atalho **CTRL + ALT + T**.
@@ -209,7 +214,7 @@ Outros comandos para ver informações sobre o sistema.
 	finger #Exibe informações do usuário que está logado no host.
 	route -n #Exibe a tabela de roteamento IP do kernel.
 	
-<h1 align="center"> Gerenciamento de usuários </h1>
+<h2 align="center"> Gerenciamento de usuários </h2>
 
 Gerenciar usuários no Linux é algo importante, pois cada usuário pode ter privilégios diferentes e acesso a conteúdos diferentes.
 
@@ -275,10 +280,48 @@ Utilizando o comando **chmod** seguido pela combinação de 3 valores conforme a
 	chmod 777 <arquivo/pasta>  #Para conceder todas as permissões para todos os usuários.
 	
 
+<h2 align="center"> Compressão de arquivos </h2>
 
+Comprimir arquivos é algo importante pois auxilia em tarefas como enviar, copiar ou armazenar o arquivo, uma vez que o tamanho do mesmo é reduzido e, consequentemente, reduz a demanda de recursos computacionais como disco e largura de banda. 
 
+	gzip <arquivo> #Para comprimir o arquivo.
+	gunzip <arquivo_comprimido> #Para descomprimir o arquivo.
 
+ou
+
+	zip <arquivo_destino.zip> <arquivo_origem> #Para comprimir o arquivo
+	unzip <arquivo_destino.zip> #Para descomprimir o arquivo.
+
+ou
+
+	rar a <arquivo_destino.rar> <orquivo_origem> #Para comprimir o arquivo.
+	rar x <arquivo_destino.rar> #Para descomprimir o arquivo.
 	
+ou
+
+	tar -cf <arquivo_destino.tar> <orquivo_origem1>  <orquivo_origem2> <orquivo_origem3>  #Para comprimir vários arquivos.
+	tar -xvf <arquivo_destino.tar> #Para descomprimir o sarquivos.
+
+<h2 align="center"> Gerenciamento de pacotes </h2>
+
+Pacotes são programas comprimidos em conjunto com todos os demais arquivos necessários para a sua execução. Exemplo de extensões de pacotes: **.deb**, **.rpm**, etc. Para gerenciar estes pacotes, existe programas como o **dpkg**, **apt** ou **yum**, etc.
+
+#### apt
+
+	sudo apt-get update #Para verificar a disponibilidade de atualizações dos pacotes.
+	sudo apt-get upgrade #Para atualizar os pacotes.
+	sudo apt-get upgrade <pacote> #Para atualizar um pacote especifico.
+	sudo apt-get install <pacote> #Para instalar um pacote.
+	sudo apt-get install -f #Para instalar pacotes depedentes de algum aplicação.
+	sudo apt-get remove <pacote> #Para remover um pacote.
+
+#### dpkg
+
+	sudo dpkg -I <pacote>.deb #Para exibir a descrição do pacote.
+	sudo dpkg -i <pacote>.deb #Para instalar um pacote .deb.
+	sudo dpkg -r <nome_do_pacote> #Para remover o pacote.
+	
+
 
 ## Referências
 

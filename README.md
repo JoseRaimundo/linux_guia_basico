@@ -1,4 +1,5 @@
-## Terminal
+
+<h1 align="center"> Terminal </h1>
 
 É um emulador de linhas de comandos que dispensa o uso de interface gráfica e facilita a automação de processos por meio de comandos, bastante utilizado por profissionais da área de TI, e podendo ser acessado pelo atalho **CTRL + ALT + T**.
 
@@ -187,3 +188,10 @@ Outros comandos para ver informações sobre o sistema.
 ### Referências
 
 Digital Inovation One: Linux: Introdução ao sistema operacional
+
+
+
+
+
+
+
